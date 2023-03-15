@@ -75,7 +75,7 @@ CC = gcc
 LIBRARY = -lm
 
 # Uncomment to include debugging information
-CFLAGS  = -I. -g -Wall -Wno-unused
+CFLAGS  = -I. -g -Wall -Wno-unused -IRainfall-runoff
 #LIBRARY = -lm
 
 # Uncomment to include execution profiling information
@@ -90,9 +90,9 @@ CFLAGS  = -I. -g -Wall -Wno-unused
 # MOST USERS DO NOT NEED TO MODIFY BELOW THIS LINE
 # -----------------------------------------------------------------------
 
-HDRS = vicNl.h vicNl_def.h global.h snow.h mtclim_constants_vic.h mtclim_parameters_vic.h LAKE.h
+_HDRS = vicNl.h vicNl_def.h global.h snow.h mtclim_constants_vic.h mtclim_parameters_vic.h LAKE.h
 
-OBJS =  CalcAerodynamic.o CalcBlowingSnow.o SnowPackEnergyBalance.o \
+_OBJS =  CalcAerodynamic.o CalcBlowingSnow.o SnowPackEnergyBalance.o \
         StabilityCorrection.o advected_sensible_heat.o alloc_atmos.o \
         alloc_veg_hist.o arno_evap.o calc_air_temperature.o \
 	calc_atmos_energy_bal.o calc_longwave.o calc_Nscale_factors.o \
@@ -127,12 +127,20 @@ OBJS =  CalcAerodynamic.o CalcBlowingSnow.o SnowPackEnergyBalance.o \
 	read_lakeparam.o ice_melt.o IceEnergyBalance.o water_energy_balance.o \
 	water_under_ice.o
 
-SRCS = $(OBJS:%.o=%.c) 
+IDIR=Rainfall-runoff
+ODIR=build
+
+_SRCS = $(_OBJS:%.o=%.c) 
+# OBJS = _OBJS
+HDRS = $(patsubst %,$(IDIR)/%,$(_HDRS))
+SRCS = $(patsubst %,$(IDIR)/%,$(_SRCS))
+OBJS = $(patsubst %,$(ODIR)/%,$(_OBJS))
 
 #$(SRCS):
 #	co $@
 
 all:
+	# mkdir bin build
 	make depend
 	make model
 
@@ -147,13 +155,16 @@ full:
 	make model
 
 clean::
-	/bin/rm -f *.o core log *~
+	cd build && /bin/rm -f *.o core log *~
 
 model: $(OBJS)
-	$(CC) -o vicNl$(EXT) $(OBJS) $(CFLAGS) $(LIBRARY)
+	$(CC) -o bin/vicNl$(EXT) $(OBJS) $(CFLAGS) $(LIBRARY)
 
 vicDisagg: $(OBJS)
 	$(CC) -o vicDisagg $(OBJS) $(CFLAGS) $(LIBRARY)
+
+$(ODIR)/%.o: $(IDIR)/%.c
+	$(CC) -c -o $@ $< $(CFLAGS)
 
 # -------------------------------------------------------------
 # tags

@@ -214,6 +214,7 @@ int  CalcAerodynamic(char    OverStory,     /* overstory flag */
         (K2*Ut) +
         Height * log((ref_height[0]-d_Upper)/Z0_Upper) / (n*K2*(Zw-d_Upper)) *
         (exp(n*(1-Zt/Height)) - 1);
+      // lots of warning at here
       fprintf(stderr, "WARNING:  Top of overstory is less than 2 meters above the lower boundary\n");
     }
 

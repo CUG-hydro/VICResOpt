@@ -1,6 +1,6 @@
 # Routing main file
 # NAME OF FLOW DIRECTION FILE
-../../RoutingSetup/flowdirection.txt
+Inputs/RoutingSetup/flowdirection.txt
 # NAME OF VELOCITY FILE
 .false.
 1.2
@@ -14,18 +14,18 @@
 .false.
 1.0
 # NAME OF STATION FILE
-../../RoutingSetup/stations.txt
+Inputs/RoutingSetup/stations.txt
 # PATH OF INPUT FILES AND PRECISION
-../../RoutingSetup/input/fluxes_
+Inputs/RoutingSetup/input/fluxes_
 4
 # PATH OF OUTPUT FILES
-../../Results/
+Results/
 # RESERVOIR LOCATION
-../../RoutingSetup/reservoirlocation.txt
+Inputs/RoutingSetup/reservoirlocation.txt
 # RESERVOIR PARAMETERS
-../../Reservoirs/
+Inputs/Reservoirs/
 # YEAR AND MONTH OF MODEL OUTPUT TO ROUTE & ROUTED OUTPUT TO WRITE
 2000 1 2005 10
 2000 1 2005 10
 # NAME OF UNIT HYDROGRAPH FILE
-../../Routing/SourceCode/UH.all
+src/routine.f/UH.all

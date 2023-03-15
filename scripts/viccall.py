@@ -23,7 +23,7 @@ os.system(f'rm {dir_rout}/fluxes*.*')
 os.system(f'rm {dir_rout}/snow*.*')
 
 # %%
-# os.system('bin/vicNl -g Inputs/Rainfall-runoffSetup/globalparam.txt')
+os.system('bin/vicNl -g Inputs/Rainfall-runoffSetup/globalparam.txt')
 
 # The following code is to move fluxes files to routing modulea 
 # check file if exist
@@ -37,5 +37,5 @@ for file in files:
 # %%
 # Run routing model
 # os.chdir('../Routing/SourceCode')
-os.system('rm *.uh_s')
+# os.system('rm *.uh_s')
 os.system('bin/rout Inputs/RoutingSetup/configuration.txt')

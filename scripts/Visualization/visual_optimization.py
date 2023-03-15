@@ -7,11 +7,9 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import pandas as pd
 
-# ------------------------------------------------------------------------------------------------------------------------------------------------
 # MODIFY THIS PART WHERE APPROPRIATE
 link1 = '../Results/optimization_objectives.txt'							# Link to the result file: calibration_variables.txt
 link2 = '../RoutingSetup/reservoiroptimization.txt'							# Link to the configuration file: reservoircalibration.txt
-# ------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Open operation file
 text_file = open(link2,'r')
@@ -85,5 +83,3 @@ if (totalobs>=3):
                   ax.set_ylabel(labels[j], size=18, labelpad=20)
                   ax.set_zlabel(labels[k], size=18, labelpad=20)
                   plt.show()
-# END OF FILE
-# ------------------------------------------------------------------------------------------------------------------------------------------------

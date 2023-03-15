@@ -3,7 +3,7 @@
 *.dll
 *.exe
 
-.vscode
+# .vscode
 
 Rainfall-runoffSetup/Results
 *Results*

@@ -2,15 +2,15 @@
 
 # 10 Mar 2020
 # THE FOLLOWING CODE CALLS VIC-Res TO IMPLEMENT MODELLING WITH DIFFERENT MODEL PARAMETERS
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
 import os
-import csv
-import multiprocessing
-import datetime
-import math
-import time
+# import numpy as np
+# import pandas as pd
+# import matplotlib.pyplot as plt
+# import csv
+# import multiprocessing
+# import datetime
+# import math
+# import time
 
 
 # %%
@@ -162,24 +162,31 @@ def viccall(soildata,rank,order,number_of_days,VIC_vars,reservoirs,maximum_no_re
         except:
             print("..")															# ignored no reservoir considered
     # Run rainfall-runoff model
+    
     os.chdir('../Rainfall-runoffSetup/Results')
     os.system('rm fluxes*.*')
     os.system('rm snow*.*')
+
     os.chdir('../../RoutingSetup/input')
     os.system('rm fluxes*.*')
+
     os.chdir('../../Rainfall-runoff')
     os.system('./vicNl -g ../Rainfall-runoffSetup/globalparam.txt')
+
     # Change the order of X and Y in the file name
     files = [f for f in os.listdir("../Rainfall-runoffSetup/Results/") if os.path.isfile(os.path.join("../Rainfall-runoffSetup/Results/",f))]
     for file in files:
         newfile = "../RoutingSetup/input/" + file
         file = "../Rainfall-runoffSetup/Results/" + file
         os.rename(file,newfile)
+    
     # Run routing model
     os.chdir('../Routing/SourceCode')
     os.system('rm *.uh_s')
+
     os.system('./rout ../../RoutingSetup/configuration.txt')
     os.chdir('../../Results')
+
     text_file = open('OUTLE.day','r')
     lines = text_file.read().split('\n')
     countno = 0

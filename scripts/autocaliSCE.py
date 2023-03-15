@@ -7,14 +7,14 @@
 # Note: this code is under development and not verified yet.
 # Require the following libs
 import spotpy
-import csv
 import os
 import numpy
 import matplotlib.pyplot as plt
-import multiprocessing
-import datetime
-import pathos
 from mpi4py import MPI												# for paralel computing only (MPI)
+# import csv
+# import multiprocessing
+# import datetime
+# import pathos
 
 # This function calls VIC and return the objective function
 class spotpy_setup(object):

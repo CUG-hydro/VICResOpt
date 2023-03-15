@@ -1,0 +1,8 @@
+{
+"editor.tabSize": 4,
+"python.defaultInterpreterPath": "/opt/miniconda3/bin/python",
+"terminal.integrated.env.windows": {
+    "PYTHONPATH": "${workspaceFolder}/src/OptCalib"
+},
+"python.envFile": "${workspaceFolder}/.env",
+}

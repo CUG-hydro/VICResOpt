@@ -3,5 +3,11 @@
 *.dll
 *.exe
 
+.vscode
+
 Rainfall-runoffSetup/Results
 *Results*
+*.pyc
+
+fluxes*
+snow*

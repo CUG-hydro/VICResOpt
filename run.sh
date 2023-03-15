@@ -33,5 +33,6 @@
 #   forcing input. However, these data are freely available on the website of
 #   the providers or they can be also replaced by other products. 
 
+# sudo apt-get install gfortran-multilib
 # mkdir Rainfall-runoffSetup/Results
-bin/vicNl -g Rainfall-runoffSetup/globalparam.txt
+bin/vicNl -g Inputs/Rainfall-runoffSetup/globalparam.txt

@@ -75,7 +75,7 @@ CC = gcc
 LIBRARY = -lm
 
 # Uncomment to include debugging information
-CFLAGS  = -I. -g -Wall -Wno-unused -IRainfall-runoff
+CFLAGS  = -I. -g -Wall -Wno-unused -Isrc/include
 #LIBRARY = -lm
 
 # Uncomment to include execution profiling information
@@ -127,12 +127,12 @@ _OBJS =  CalcAerodynamic.o CalcBlowingSnow.o SnowPackEnergyBalance.o \
 	read_lakeparam.o ice_melt.o IceEnergyBalance.o water_energy_balance.o \
 	water_under_ice.o
 
-IDIR=Rainfall-runoff
+IDIR=src/VICResOpt
 ODIR=build
 
 _SRCS = $(_OBJS:%.o=%.c) 
 # OBJS = _OBJS
-HDRS = $(patsubst %,$(IDIR)/%,$(_HDRS))
+HDRS = $(patsubst %,src/include/%,$(_HDRS))
 SRCS = $(patsubst %,$(IDIR)/%,$(_SRCS))
 OBJS = $(patsubst %,$(ODIR)/%,$(_OBJS))
 
